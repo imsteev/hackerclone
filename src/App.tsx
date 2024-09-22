@@ -72,6 +72,7 @@ function App() {
         stories: top,
         setStories: setTop,
         paginator: paginatorTop,
+        comments: true,
       },
       {
         name: "job",
@@ -180,6 +181,7 @@ const HNStories = ({
         >
           Previous
         </Button>
+        <Text>implement pagination breadcrumbs here</Text>
         <Button
           disabled={!hasNext}
           loading={loading}
