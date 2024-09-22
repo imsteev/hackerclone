@@ -10,6 +10,7 @@ import {
   Container,
   Badge,
   Dialog,
+  Box,
 } from "@radix-ui/themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HN, Paginator, type Item } from "./hackernews";
