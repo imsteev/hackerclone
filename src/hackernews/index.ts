@@ -76,14 +76,18 @@ export const HN = Object.freeze({
 export class Paginator {
   ids!: number[];
   currentPage: number; // current is where the paginator should start loading from when next gets called
+  totalPages: number;
 
   constructor(private limit: number) {
     this.currentPage = 0;
     this.limit = limit;
+    this.ids = [];
+    this.totalPages = 0;
   }
 
   withIDs(ids: number[]) {
     this.ids = ids;
+    this.totalPages = Math.floor(this.ids.length / this.limit);
   }
 
   async load(): Promise<Item[]> {
@@ -113,6 +117,14 @@ export class Paginator {
     const result = HN.getItemsByIDs(this.ids.slice(start, end));
     this.currentPage--;
     return result;
+  }
+
+  hasNext(): boolean {
+    return this.currentPage < this.totalPages;
+  }
+
+  hasPrevious(): boolean {
+    return this.currentPage > 0;
   }
 
   private getStartAndEnd(page: number) {
