@@ -10,7 +10,6 @@ import {
   Container,
   Badge,
   Dialog,
-  Box,
 } from "@radix-ui/themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HN, Paginator, type Item } from "./hackernews";
@@ -170,30 +169,6 @@ const HNStories = ({
 }) => {
   return (
     <>
-      <Flex justify="between">
-        <Button
-          disabled={!hasPrevious}
-          loading={loading}
-          onClick={onPrevious}
-          mt="4"
-          size="1"
-          variant="outline"
-        >
-          Previous
-        </Button>
-        <Text>implement pagination breadcrumbs here</Text>
-        <Button
-          disabled={!hasNext}
-          loading={loading}
-          onClick={onNext}
-          mt="4"
-          size="1"
-          variant="outline"
-        >
-          Next
-        </Button>
-      </Flex>
-
       <Flex direction="column" gap="4" mt="4">
         {stories.map((s) => (
           <Card key={s.id}>
@@ -258,6 +233,28 @@ const HNStories = ({
             </Flex>
           </Card>
         ))}
+      </Flex>
+
+      <Flex justify="between">
+        <Button
+          disabled={!hasPrevious}
+          loading={loading}
+          onClick={onPrevious}
+          mt="4"
+          variant="outline"
+        >
+          Previous
+        </Button>
+        <Text>implement pagination breadcrumbs here</Text>
+        <Button
+          disabled={!hasNext}
+          loading={loading}
+          onClick={onNext}
+          mt="4"
+          variant="outline"
+        >
+          Next
+        </Button>
       </Flex>
     </>
   );
