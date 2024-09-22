@@ -25,6 +25,9 @@ function App() {
   const [newStories, setNewStories] = useState<Item[]>([]);
   const [ask, setAsk] = useState<Item[]>([]);
 
+  // bug: while in practice these will only get created once since this is pretty
+  // high up the component tree, they are still prone to re-creating upon re-renders.
+  // fix should involve only setting the ref if it's null.
   const paginatorTop = useRef(new Paginator(10));
   const paginatorJobs = useRef(new Paginator(10));
   const paginatorBest = useRef(new Paginator(10));
